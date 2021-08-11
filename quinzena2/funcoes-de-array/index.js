@@ -31,7 +31,7 @@ novoArrayC = [{ nome: "Amanda Rangel", apelido: "Mandi" }, { nome: "Laís Petra"
 
 // EXERCÍCIOS DE ESCRITA DE CÓDIGO
 //1. 
-const pets = [
+ const pets = [
     { nome: "Lupin", raca: "Salsicha"},
     { nome: "Polly", raca: "Lhasa Apso"},
     { nome: "Madame", raca: "Poodle"},
@@ -78,7 +78,7 @@ for (let poodle of poodlesNomes){
 }
 
 console.log (mensagensDesconto) 
-
+ 
 //EXERCÍCIO 2.
 const produtos = [
     { nome: "Alface Lavada", categoria: "Hortifruti", preco: 2.5 },
@@ -101,5 +101,56 @@ const produtos = [
 console.log (nomeDosProdutos) 
 // 2.b)
 
+const precoDosProdutos = produtos.map ((produto, indice, array) => {
+    return produto.preco
+})
+console.log (precoDosProdutos) 
+
+let novosPrecos = []
+
+for (i=0; i < precoDosProdutos.length; i++){
+    let novoPreco = Number((precoDosProdutos[i]*0.95).toFixed(2))
+    novosPrecos.push (novoPreco)
+}
 
 
+let produtosPrecoComDesconto = []
+
+for (i=0; i < nomeDosProdutos.length; i++){
+    novoArray = {
+        nome: nomeDosProdutos[i],
+         preco: novosPrecos[i]
+    }
+   
+    produtosPrecoComDesconto.push(novoArray)
+
+}
+
+console.log (produtosPrecoComDesconto) 
+
+//2.c)
+
+ const produtosBebidas = produtos.filter((produto, index, novoArray) => {
+    return produto.categoria === 'Bebidas'
+})
+
+console.log (produtosBebidas) 
+
+//2.d)
+
+ const produtosYpe = produtos.filter((produto, index, novoArray)=>{
+    if (produto.nome.includes("Ypê")){
+        return produto.nome
+    }
+})
+
+console.log(produtosYpe) 
+
+//2.e)
+
+let mensagemYpe = []
+
+for (let i=0; i < produtosYpe.length; i++){
+    mensagemYpe.push(`Compre ${produtosYpe[i].nome} por R$${produtosYpe[i].preco}`)
+}
+console.log(mensagemYpe)
