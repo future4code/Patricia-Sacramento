@@ -48,7 +48,14 @@ let arrayPares = array
 
 // EXERCÍCIO 04
 function retornaMaiorNumero(array) {
+  let maiorNumero = 0
 
+  for (let numero of array){
+      if (maiorNumero < numero){
+          maiorNumero = numero
+      }
+  }
+  return maiorNumero
 }
 
 // EXERCÍCIO 05
