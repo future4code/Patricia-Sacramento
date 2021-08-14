@@ -93,7 +93,17 @@ function retornaExpressoesBooleanas() {
 
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
+  let par = 0
 
+  let numerosPares = []
+  
+  for (let i = 0; i < n; i++) {
+  
+      numerosPares.push(par)
+      par +=2
+      
+  }
+  return numerosPares
 }
 
 // EXERCÍCIO 08
