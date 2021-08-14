@@ -110,7 +110,14 @@ function retornaNNumerosPares(n) {
 function checaTriangulo(a, b, c) {
   // return 'Escaleno'
   // return 'Equilátero'
-  // return 'Isósceles'
+  // return 'Isósceles'  
+  if (a === b && a === c) {
+    return 'Equilátero'
+  } else if (a === b || a === c || b === c){
+    return 'Isósceles'
+  } else if (a !== b && a !== c && b !== c){
+    return 'Escaleno'
+  }
 }
 
 // EXERCÍCIO 09
