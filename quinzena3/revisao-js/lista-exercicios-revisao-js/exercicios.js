@@ -13,7 +13,23 @@ function inverteArray(array) {
 
 // EXERCÍCIO 02
 function retornaNumerosParesElevadosADois(array) {
+  let numerosPares = (numero, indice, array) => {
+    if (numero % 2 === 0){
+        return numero
+    }
+}
 
+let potenciaDois = (numero, indice, array) => {
+    numero = Math.pow (numero, 2)
+    return numero
+}
+
+let numerosPotenciaDois = array
+    .filter(numerosPares)
+    .map(potenciaDois)
+
+
+  return numerosPotenciaDois
 }
 
 // EXERCÍCIO 03
