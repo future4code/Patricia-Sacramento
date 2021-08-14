@@ -34,7 +34,16 @@ let numerosPotenciaDois = array
 
 // EXERCÍCIO 03
 function retornaNumerosPares(array) {
+  let numerosPares = (numero, indice, array) => {
+    if (numero % 2 === 0){
+        return numero
+    }
+}
 
+let arrayPares = array
+    .filter(numerosPares)
+
+  return arrayPares
 }
 
 // EXERCÍCIO 04
