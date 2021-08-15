@@ -128,6 +128,30 @@ function comparaDoisNumeros(num1, num2) {
   //   maiorDivisivelPorMenor: Y,
   //   diferenca: Z
   // }
+  let comparaNumeros = {
+    maiorNumero: 0,
+    maiorDivisivelPorMenor: true,
+    diferenca: 0
+  }
+
+  if (num1 > num2){
+    comparaNumeros.maiorNumero = num1
+    if (num1 % num2 === 0){
+        comparaNumeros.maiorDivisivelPorMenor = true
+    } else{
+        comparaNumeros.maiorDivisivelPorMenor = false
+    }
+    comparaNumeros.diferenca = num1 - num2
+  } else {
+    comparaNumeros.maiorNumero = num2
+    if (num2 % num1 === 0){
+      comparaNumeros.maiorDivisivelPorMenor = true
+    } else{
+      comparaNumeros.maiorDivisivelPorMenor = false
+    }
+    comparaNumeros.diferenca = num2 - num1
+  }
+  return comparaNumeros
 }
 
 // EXERCÍCIO 10
