@@ -206,7 +206,26 @@ function segundoMaiorEMenor(array) {
 
 // EXERCÍCIO 11
 function ordenaArray(array) {
-
+  let copiaArray = [...array]
+  let ordemCrescente = []
+  
+  const tamanhoArrayOriginal = array.length
+  let i = 0
+  
+  while (i < tamanhoArrayOriginal){
+      let menorNumero = Infinity
+      for (let numero of copiaArray){
+          if (menorNumero > numero){
+              menorNumero = numero 
+          }  
+      
+      }
+      ordemCrescente.splice(i, 1, menorNumero)
+      copiaArray.splice(copiaArray.indexOf(menorNumero), 1)
+      i++
+  }
+  
+  return ordemCrescente
 }
 
 // EXERCÍCIO 12
