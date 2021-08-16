@@ -304,7 +304,13 @@ function menoresDe18(arrayDePessoas) {
 
 // EXERCÍCIO 17A
 function multiplicaArrayPor2(array) {
+  let multiplicadosPorDois = []
 
+  for (let numero of array){
+    multiplicadosPorDois.push(numero*2)
+  }
+  
+  return multiplicadosPorDois
 }
 
 // EXERCÍCIO 17B
