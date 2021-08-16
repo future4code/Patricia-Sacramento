@@ -356,7 +356,16 @@ function retornaPessoasAutorizadas(pessoas) {
 
 // EXERCÍCIO 18B
 function retornaPessoasNaoAutorizadas(pessoas) {
-
+  let criteriosBrinquedo = (pessoa, indice, novoArray) => {
+    if (pessoa.altura < 1.5 || pessoa.idade <= 14 || pessoa.idade > 60){
+      return pessoa
+    }
+  }
+  
+  let semPermissaoBrinquedo = pessoas
+    .filter(criteriosBrinquedo)
+  
+  return semPermissaoBrinquedo
 }
 
 // EXERCÍCIO 19A
