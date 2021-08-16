@@ -342,7 +342,16 @@ function verificaParidade(array) {
 
 // EXERCÍCIO 18A
 function retornaPessoasAutorizadas(pessoas) {
-
+  let criteriosBrinquedo = (pessoa, indice, novoArray) => {
+    if (pessoa.altura >= 1.5 && pessoa.idade > 14 && pessoa.idade < 60){
+      return pessoa
+    }
+  }
+  
+  let permissaoBrinquedo = pessoas
+    .filter(criteriosBrinquedo)
+  
+  return permissaoBrinquedo
 }
 
 // EXERCÍCIO 18B
