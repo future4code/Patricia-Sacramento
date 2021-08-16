@@ -285,13 +285,21 @@ function maioresDe18(arrayDePessoas) {
   let apenasAdultos = arrayDePessoas
     .filter(adultos)
   
-  
   return apenasAdultos
 }
 
 // EXERCÍCIO 16B
 function menoresDe18(arrayDePessoas) {
-
+  let criancas = (pessoa, indice, novoArray) => {
+    if (pessoa.idade < 18) {
+      return pessoa
+    }
+  }
+  
+  let apenasCriancas = arrayDePessoas
+    .filter(criancas)
+  
+  return apenasCriancas
 }
 
 // EXERCÍCIO 17A
