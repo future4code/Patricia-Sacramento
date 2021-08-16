@@ -315,7 +315,14 @@ function multiplicaArrayPor2(array) {
 
 // EXERCÍCIO 17B
 function multiplicaArrayPor2S(array) {
+  let multiplicadosPorDois = []
 
+  for (let numero of array){
+    numero *= 2
+    multiplicadosPorDois.push(numero.toString())
+  }
+  
+  return multiplicadosPorDois
 }
 
 // EXERCÍCIO 17C
