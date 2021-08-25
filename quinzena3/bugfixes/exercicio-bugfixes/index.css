@@ -110,7 +110,7 @@ div:last-child {
 
 table {
     width: 60%;
-    margin-left: 350px;
+    margin: 0 auto;
     text-align: center;
 }
 
