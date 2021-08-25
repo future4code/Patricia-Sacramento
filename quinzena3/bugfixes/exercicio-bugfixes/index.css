@@ -34,6 +34,7 @@ div>p:first-child {
     width: 200px;
 }
 
+
 div img {
     background: black;
 }
@@ -88,6 +89,7 @@ div img {
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
+    display: inline;
 }
 
 
@@ -104,6 +106,7 @@ div:last-child {
 
 table {
     width: 60%;
+    margin: 0 auto;
 }
 
 td button {
