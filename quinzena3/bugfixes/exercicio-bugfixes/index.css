@@ -19,6 +19,11 @@ h2 {
 input {
     height: 20px;
     width: 500px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom-width: 3px;
+    border-bottom-color: black;
 }
 
 button:focus {
@@ -120,20 +125,27 @@ td button {
 td button:hover{
     background-color: #ccb139;
 }
+
 .container-do-search {
     margin-top: 20px;
     height: 100px;
+    display: block;
 }
+
 
 
 #back-button {
     background-color: white;
+    display: block;
+    position: relative;
+    margin: 0 auto;
     width: 100px;
     height: 20px;
     border: 1px solid black;
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    
 }
 
 #back-button:active{
