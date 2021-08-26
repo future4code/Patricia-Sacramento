@@ -1,0 +1,27 @@
+
+
+div {
+    background-color: rgb(130, 128, 209);
+    
+}
+   
+a {
+    background-color: rgb(221, 65, 141);
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+}
+
+p {
+    color: rgb(10, 10, 10);
+    display: inline-block;
+    
+}
+
+#bem-vindx {
+    color: rgb(8, 8, 8);
+    text-align: center;
+    background-color: rgb(221, 65, 141);
+
+}
+
