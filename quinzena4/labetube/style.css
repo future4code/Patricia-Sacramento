@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+header{
+    background-color: black;
+    color: palevioletred;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.pagina-principal{
+    background-color: palevioletred;
+    display: grid;    
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 10px;
+
+}
+
+.card-video{
+    background-color: lavender;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.card-video>img{
+    width: 250px;
+    height: 250px; 
+}
+
+.card-video>a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: plum
+}
+
+footer{
+    background-color: black;
+    color: palevioletred;
+    padding: 10px;
+    position: sticky;
+    left: 0;
+    right: 0;
+    bottom: 0;
+} 
+
+#rodape-principal{
+    text-align: center;
+}
+
+#rodape{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    margin: 0 530px;
+}
+
+#rodape>a{
+    color: lightcyan;
+    border: 1px solid lightcyan;
+    text-decoration: none;
+
+}
+
+.pagina-videos{
+    background-color: lavender;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.videos>h2{
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: palevioletred;
+}
+
+.videos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
