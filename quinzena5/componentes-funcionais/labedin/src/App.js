@@ -2,6 +2,15 @@ import React from 'react';
 import './App.css';
 import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
+import img1 from './img/img1.jpg'
+import img2 from './img/img2.png'
+import cat from './img/cat.png'
+import CardPequeno from './components/CardPequeno/CardPequeno';
+import imgemail from './img/email.png'
+import imgendereco from './img/endereco-residencial.png'
+
+
+
 
 function App() {
   return (
@@ -9,9 +18,9 @@ function App() {
       <div className="page-section-container">
         <h2>Dados pessoais</h2>
         <CardGrande 
-          imagem="https://uploads-ssl.webflow.com/5d640f4558306be99cf47a0e/5dd57846babb597b77c6bb1d_PerfilFuture4_cor.png" 
+          imagem={img1} 
           nome="Patrícia" 
-          descricao="Oi, eu sou a Patrícia. Sou professora de História de Educação Básica. Adoro ler e ver séries. Amo meus gatos, Jorge Ricardo e Sebastião Augusto, e minha cachorra, Lola. "
+          descricao="Oi, eu sou a Patrícia. Sou professora de História de Educação Básica e Desenvolvedora Front-End em formação. Adoro ler e ver séries. Amo meus gatos, Jorge Ricardo e Sebastião Augusto, e minha cachorra, Lola. "
         />
         
         <ImagemButton 
@@ -21,17 +30,33 @@ function App() {
       </div>
 
       <div className="page-section-container">
+        <CardPequeno
+        imagem={imgemail}
+        titulo="E-mail: "
+        info="patriciargsacramento@gmail.com"
+        /> 
+      </div>
+
+      <div className="page-section-container">
+        <CardPequeno
+        imagem={imgendereco}
+        titulo="Endereço: "
+        info="Rua São Luiz, 730 - Belo Horizonte"
+        /> 
+      </div>
+
+      <div className="page-section-container">
         <h2>Experiências profissionais</h2>
         <CardGrande 
-          imagem="https://s3.amazonaws.com/future4.com.br/static/headf4-c492117ca2373dc85ca81bf715b3dc2a.png" 
+          imagem={img2} 
           nome="Governo do Estado de Minas Gerais" 
           descricao="Professora de História de Educação Básica" 
         />
         
         <CardGrande 
-          imagem="https://imagens.canaltech.com.br/empresas/4418.400.jpg" 
+          imagem={cat} 
           nome="VIDA" 
-          descricao="Vivendo" 
+          descricao="Vivendo ou apenas existindo" 
         />
       </div>
 
