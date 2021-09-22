@@ -8,6 +8,7 @@ class Etapa3 extends React.Component{
         return(
             <div>
                 <h2>ETAPA 2 - INFORMAÇÕES EDUCACIONAIS</h2>
+                <p>Caso tenha marcado Ensino Médio Incompleto ou Ensino Médio Completo: </p>
                 <p> 1. Por que você não terminou um curso de graduação?</p>
                 <input name={'porque não terminou curso'} />
                 <p> 2. Você fez algum curso complementar?</p>
