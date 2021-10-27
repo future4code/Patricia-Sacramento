@@ -1,7 +1,7 @@
 import react, { useState } from "react";
 import styled from "styled-components";
-import Matches from "./Components/Matches.js";
-import Perfil from "./Components/Perfil.js";
+import Matches from "./components/pages/Matches";
+import Perfil from "./components/pages/Perfil";
 
 const PaginaContainer = styled.div` 
 
@@ -23,9 +23,15 @@ function App() {
   const renderizaPagina = (event) =>{
    setPaginaRenderizada(event.target.value)
 
+    if(paginaRenderizada === "perfil") {
+      setPaginaRenderizada("matches");
+    } else {
+      setPaginaRenderizada("perfil");
+    }
+
   }
 
-  const mudaPagina = () => {
+  const pegaPagina = () => {
     switch (paginaRenderizada){
     case "perfil": 
       return <Perfil />
@@ -38,13 +44,19 @@ function App() {
   }
 
 
-  
+/*   const mudaPagina = () => {
+    if(paginaRenderizada === "perfil") {
+      setPaginaRenderizada("matches");
+    } else {
+      setPaginaRenderizada("home");
+    }
+  } */
 
 
   return (
     <ContainerPrincipal>
 
-      {mudaPagina()}
+      {pegaPagina()}
 
       <BotoesMatches>
           <button value="matches" onClick={renderizaPagina}>{paginaRenderizada === "perfil" ? "Ir para Matches" : "Ir para Home"}</button>
