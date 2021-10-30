@@ -1,3 +1,4 @@
+import axios from "axios";
 import react, { useState } from "react";
 import styled from "styled-components";
 import Matches from "./components/pages/Matches";
@@ -40,6 +41,16 @@ function App() {
 
   }
 
+  const LimpaMatches = () => {
+    axios.put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/patricia/clear")
+    .then((resposta) =>{
+      alert("Matches limpados com sucesso!")
+      setPaginaRenderizada("perfil")
+    })
+    .catch((erro) => {
+      alert("Algo deu errado! Tente novamente")
+    })
+  }
 
 
   return (
@@ -49,7 +60,7 @@ function App() {
 
       <BotoesMatches>
           <button value="matches" onClick={renderizaPagina}>{paginaRenderizada === "perfil" ? "Ir para Matches" : "Ir para Home"}</button>
-          <button value="limpa-matches">Limpa Matches</button>
+          <button onClick={LimpaMatches}>Limpa Matches</button>
       </BotoesMatches>
      
     </ContainerPrincipal> 

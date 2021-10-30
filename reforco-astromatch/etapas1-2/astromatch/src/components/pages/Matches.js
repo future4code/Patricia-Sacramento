@@ -48,9 +48,9 @@ function Matches (){
     const MapMatches = () => {
        const listaMatches = matches.map((match) => {
             return <MatchContainer>
-            <img src={match.photo} />
-            <h2>{match.name}</h2>
-        </MatchContainer>
+                <img src={match.photo} />
+                <h2>{match.name}</h2>
+            </MatchContainer>
         })
         return listaMatches
     }
