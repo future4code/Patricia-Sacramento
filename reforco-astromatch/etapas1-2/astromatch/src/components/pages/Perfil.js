@@ -35,11 +35,28 @@ function Perfil () {
       console.log("Algo deu errado! Tente novamente.")
     })
   }
-  
+
+
+  const EscolhePessoa = (boolean) => {
+    const body = {
+      "id": perfis.id,
+      "choice": boolean
+    }
+
+    axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/patricia/choose-person", body)
+    .then((resposta) =>{
+      pegaPerfis()
+    })
+    .catch((erro) => {
+      console.log(erro.response)
+    })
+  }
+
   useEffect(() => {
     pegaPerfis()
   }, [])
 
+  console.log (perfis)
   return (
    
        <PerfilContainer value="perfil">
@@ -47,8 +64,8 @@ function Perfil () {
         <h2>{perfis.name}, {perfis.age}</h2>
         <p>{perfis.bio}</p>
         <Botoes>
-          <button>Deslike</button>
-          <button>Like</button>
+          <button onClick={() => EscolhePessoa(false)}>Deslike</button>
+          <button onClick={() => EscolhePessoa(true)}>Like</button>
         </Botoes>
       </PerfilContainer>     
  
