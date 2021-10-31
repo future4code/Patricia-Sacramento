@@ -1,8 +1,10 @@
 import axios from "axios";
 import react, { useState } from "react";
 import styled from "styled-components";
-import Matches from "./components/pages/Matches";
-import Perfil from "./components/pages/Perfil";
+import Matches from "./pages/matches/Matches";
+import Perfil from "./pages/perfil/Perfil";
+
+
 
 
 const ContainerPrincipal = styled.div` 
@@ -58,7 +60,7 @@ function App() {
 
       {pegaPagina()}
 
-      <BotoesMatches>
+      <BotoesMatches >
           <button value="matches" onClick={renderizaPagina}>{paginaRenderizada === "perfil" ? "Ir para Matches" : "Ir para Home"}</button>
           <button onClick={LimpaMatches}>Limpa Matches</button>
       </BotoesMatches>
