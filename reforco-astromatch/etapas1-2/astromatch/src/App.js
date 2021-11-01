@@ -17,7 +17,7 @@ const BotoesMatches = styled.div `
   margin-top: 1%;
   
   >button{
-    background-color: #6B7ADB;
+    background-color: #F5554C;
     color: black;
     font-size: large;
     font-weight: 400;
