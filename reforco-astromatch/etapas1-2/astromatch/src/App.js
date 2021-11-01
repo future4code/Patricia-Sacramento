@@ -14,7 +14,16 @@ const ContainerPrincipal = styled.div`
 
 const BotoesMatches = styled.div ` 
   text-align: center;
-  margin-top: 2%;
+  margin-top: 1%;
+  
+  >button{
+    background-color: #6B7ADB;
+    color: black;
+    font-size: large;
+    font-weight: 400;
+    height: 30px;
+    margin: 0 3px;
+  }
 `
 
 function App() {

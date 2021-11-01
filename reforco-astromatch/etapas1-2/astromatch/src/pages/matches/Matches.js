@@ -33,7 +33,7 @@ function Matches (){
     }
     return(
         <PerfilContainer>
-             {matches.length ? <MapMatches/> : <p> Nada para ver aqui </p>}   
+             {matches.length ? <MapMatches/> : <h2> Nada para ver aqui </h2>}   
         </PerfilContainer>
     )
 }

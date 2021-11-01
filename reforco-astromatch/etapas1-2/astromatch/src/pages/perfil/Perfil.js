@@ -1,6 +1,8 @@
 import react, { useEffect, useState } from "react";
 import axios from "axios";
-import {PerfilContainer, Botoes} from "./style";
+import {PerfilContainer, Botoes, IconeBotao} from "./style";
+import heart from "../../imagens/heart.png";
+import cancel from "../../imagens/cancel.png";
 
 
 
@@ -43,8 +45,8 @@ function Perfil () {
         <h2>{perfis.name}, {perfis.age}</h2>
         <p>{perfis.bio}</p>
         <Botoes>
-          <button onClick={() => EscolhePessoa(false)}>Deslike</button>
-          <button onClick={() => EscolhePessoa(true)}>Like</button>
+          <IconeBotao  src={cancel} onClick={() => EscolhePessoa(false)} />
+          <IconeBotao src={heart} onClick={() => EscolhePessoa(true)} />
         </Botoes>
       </PerfilContainer>     
  

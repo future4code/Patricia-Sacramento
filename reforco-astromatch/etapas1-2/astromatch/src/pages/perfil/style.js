@@ -9,9 +9,10 @@ export const PerfilContainer = styled.div`
     border-radius: 10%;
     max-height: 100vh;
     max-width: 50vw;
-    height: 85vh;
+    height: 87vh;
     width: 40vw;
     box-shadow: 0 0 10px black;
+    background-color:#6B8ADB;
     >img{
     width: 60%;
     height: 60%;
@@ -20,5 +21,11 @@ export const PerfilContainer = styled.div`
 `
 
 export const Botoes = styled.div` 
-  
+  display: flex;
+  justify-content: space-around;
+`
+
+export const IconeBotao = styled.img ` 
+    max-height: 8%;
+    max-width: 8%;
 `
