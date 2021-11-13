@@ -31,12 +31,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage />} />     
-          <Route exact path="/list-trips" element={<ListTripsPage />} />  
-          <Route exact path="/application-form" element={<ApplicationFormPage />} />  
+          <Route exact path="/trips/list" element={<ListTripsPage />} />  
+          <Route exact path="/trips/application" element={<ApplicationFormPage />} />  
           <Route exact path="/login" element={<LoginPage />} />      
-          <Route exact path="/admin-home-page" element={<AdminHomePage />} />       
-          <Route exact path="/create-trip" element={<CreateTripPage />} />       
-          <Route exact path="/trip-details" element={<TripDetailsPage />} /> 
+          <Route exact path="/admin/trips/list" element={<AdminHomePage />} />       
+          <Route exact path="/admin/trips/create" element={<CreateTripPage />} />       
+          <Route exact path="/admin/trips/:id" element={<TripDetailsPage />} /> 
         </Routes>
       </BrowserRouter>
     </div>

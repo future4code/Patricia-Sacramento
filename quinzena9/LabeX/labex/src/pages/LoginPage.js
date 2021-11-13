@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 
 const ContainerListTrips = styled.div`
@@ -48,6 +48,9 @@ const ContainerViagem = styled.div`
 `
 
 export function LoginPage () {
+
+    const navigate = useNavigate()
+
     return (
         <ContainerListTrips> 
             <ListTrips>
@@ -60,7 +63,7 @@ export function LoginPage () {
 
             </ListTrips>
             <MenuLateral>
-                <button>Voltar</button>
+                <button onClick={() => {navigate(-1)}}>Voltar</button>
             </MenuLateral>
         </ContainerListTrips>
     )

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BrowserRouter as Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 
 const ContainerListTrips = styled.div`
@@ -47,6 +47,9 @@ const ContainerViagem = styled.div`
 `
 
 export function AdminHomePage () {
+
+    const navigate = useNavigate()
+
     return (
         <ContainerListTrips> 
             <ListTrips>
@@ -61,8 +64,8 @@ export function AdminHomePage () {
                 </ContainerViagem>
             </ListTrips>
             <MenuLateral>
-                <button>Voltar</button>
-                <button>Criar Viagem</button>
+                <button onClick={() => {navigate(-1)}}>Voltar</button>
+                <button onClick={() => {navigate("/admin/trips/create")}}>Criar Viagem</button>
                 <button>Logout</button>
             </MenuLateral>
         </ContainerListTrips>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 
@@ -42,18 +43,7 @@ const ContainerViagem = styled.div`
 
 export function ListTripsPage () {
 
-    const [trips, setTrips] = useState([])
-
-    const getTrips = () => {
-        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/patricia-sacramento-banu/trips")
-        .then(response => setTrips(response.data))
-        .catch(error => console.log(error.message))
-
-    }
-
-    useEffect(() => {
-        getTrips()
-    }, [])
+    const navigate = useNavigate()
 
     return (
         <ContainerListTrips> 
@@ -75,8 +65,8 @@ export function ListTripsPage () {
                 </ContainerViagem>
             </ListTrips>
             <MenuLateral>
-                <button>Voltar</button>
-                <button>Inscreva-se</button>
+                <button onClick={() => {navigate(-1)}}>Voltar</button>
+                <button onClick={() => {navigate("/trips/application")}}>Inscreva-se</button>
             </MenuLateral>
         </ContainerListTrips>
     )

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom"; 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const HomeContainer = styled.div` 
     display: flex;
@@ -33,18 +32,10 @@ export function HomePage () {
 
     const navigate = useNavigate()
 
-    const goToListTripsPage = () => {
-        navigate("/list-trips")
-    }
-
-    const goToAdminHomePage = () => {
-        navigate("/admin-home-page")
-    }
-
     return (
         <HomeContainer>
-            <BotaoPageViagens onClick={goToListTripsPage}>Lista de Viagens</BotaoPageViagens>
-            <BotaoPageLogin onClick={goToAdminHomePage}>Área Administrativa</BotaoPageLogin>
+            <BotaoPageViagens onClick={() => {navigate("/trips/list")}}>Lista de Viagens</BotaoPageViagens>
+            <BotaoPageLogin onClick={() => {navigate("/admin/trips/list")}}>Área Administrativa</BotaoPageLogin>
         </HomeContainer>
     )
 }

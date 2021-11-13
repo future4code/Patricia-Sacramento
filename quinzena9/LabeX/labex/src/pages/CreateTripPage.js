@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 
 const ContainerApplicationForm = styled.div`
@@ -46,6 +46,9 @@ const MenuLateral = styled.div`
 `
 
 export function CreateTripPage () {
+
+    const navigate = useNavigate()
+
     return (
         <ContainerApplicationForm> 
             <ContainerForm>
@@ -61,7 +64,7 @@ export function CreateTripPage () {
                 </Form>
             </ContainerForm>
             <MenuLateral>
-                <button>Voltar</button>
+                <button onClick={() => {navigate(-1)}}>Voltar</button>
                 <button>Logout</button>
             </MenuLateral>
 
