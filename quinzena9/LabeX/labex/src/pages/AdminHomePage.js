@@ -1,73 +1,61 @@
-import React from "react";
-import styled from "styled-components";
-import { useNavigate } from "react-router";
+import React, {useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import axios from "axios";
+import { useProtectedPage } from "../hooks";
+import { MenuBar, GenericContainer, Lists, AdminTripContainer } from "./styled";
 
-
-const ContainerListTrips = styled.div`
-    display: flex;
-    margin: 0 2%;
-    justify-content: space-between;
-
-`
-const ListTrips = styled.div `
-   margin: 0 auto;
-    >h2{
-        text-align: center;
-    }  
-`
-const MenuLateral = styled.div`
-    height: 100vh;
-    width: 10vw;
-    border-left: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 5%;
-    >button{
-        margin-top: 15%;
-    }
-` 
-
-const ContainerViagem = styled.div` 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 15vh;
-    width: 40vw;
-    padding: 1%;
-    border: 1px solid black;
-    background-color: lightseagreen;
-    font-size: large;
-    margin-top: 2%;
-    padding: 2%;
-    >button{
-        height: 40%;
-
-    }
-`
 
 export function AdminHomePage () {
 
     const navigate = useNavigate()
 
+    const [trips, setTrips] = useState ([])
+
+    const getTrips = () => {
+        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/patricia-sacramento-banu/trips")
+        .then((response) => {
+            setTrips(response.data.trips)
+        }).catch(() => {
+            alert("Algo deu errado! Tente novamente mais tarde!")
+        })
+    }
+
+    useProtectedPage()
+
+    useEffect(() => {
+        getTrips() 
+
+    }, [])
+
+
+    const goToTripDetailsPage = (id) => {
+        navigate(`/admin/trips/${id}`)
+    }
+
+    const listTripsAdmin = trips.map((trip) => {
+        return <AdminTripContainer key={trip.id} onClick={() => {goToTripDetailsPage(trip.id)}}>
+            <p><b>Nome: </b>{trip.name}</p>
+            <button>Deletar</button>
+        </AdminTripContainer>
+    })
+
+    const logout = () => {
+        localStorage.clear("token")
+        navigate("/login")
+    }
+
     return (
-        <ContainerListTrips> 
-            <ListTrips>
+   
+        <GenericContainer> 
+            <Lists>
                 <h2>PAINEL ADMINISTRATIVO</h2>
-                <ContainerViagem>
-                    <p><b>Nome:</b></p>
-                    <button>Deletar</button>
-                </ContainerViagem>
-                <ContainerViagem>
-                    <p><b>Nome:</b></p>
-                    <button>Deletar</button>
-                </ContainerViagem>
-            </ListTrips>
-            <MenuLateral>
+                {listTripsAdmin}
+            </Lists>
+            <MenuBar>
                 <button onClick={() => {navigate(-1)}}>Voltar</button>
                 <button onClick={() => {navigate("/admin/trips/create")}}>Criar Viagem</button>
-                <button>Logout</button>
-            </MenuLateral>
-        </ContainerListTrips>
+                <button onClick={logout}>Logout</button>
+            </MenuBar>
+        </GenericContainer>
     )
 }

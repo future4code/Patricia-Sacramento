@@ -1,70 +1,65 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import axios from "axios";
+import { MenuBar, GenericContainer, Lists, FormContainer } from "./styled";
 
-
-const ContainerListTrips = styled.div`
-    display: flex;
-    margin: 0 2%;
-    justify-content: space-between;
-
-`
-const ListTrips = styled.div `
-   margin: 0 auto;
-    >h2{
-        text-align: center;
-    }  
-`
-const MenuLateral = styled.div`
-    height: 100vh;
-    width: 10vw;
-    border-left: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 5%;
-    >button{
-        margin-top: 15%;
-    }
-` 
-
-const ContainerViagem = styled.div` 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 20vh;
-    width: 40vw;
-    padding: 2%;
-    border: 1px solid black;
-    background-color: lightseagreen;
-    font-size: large;
-    margin-top: 2%;
-    padding: 2%;
-    >button{
-        height: 20%;
-
-    }
-`
 
 export function LoginPage () {
 
     const navigate = useNavigate()
 
-    return (
-        <ContainerListTrips> 
-            <ListTrips>
-                <h2>LOGIN</h2>
-                <ContainerViagem>
-                    <input placeholder={"E-mail"} />
-                    <input placeholder={"Senha"} />
-                    <button>Entrar</button>
-                </ContainerViagem>
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
+    const [token, setToken] = useState("")
 
-            </ListTrips>
-            <MenuLateral>
+    const onChangeEmail = (event) => {
+        setEmail(event.target.value)
+    }
+
+    const onChangeSenha = (event) => {
+        setSenha(event.target.value)
+    }
+
+    const body = {
+        "email": email,
+        "password": senha
+    }
+
+    const login = () => {
+       axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/patricia-sacramento-banu/login", body)
+        .then((response) => {
+            setToken(response.data.token)
+            localStorage.setItem("token", response.data.token)
+            navigate("/admin/trips/list")
+            setEmail("")
+            setSenha("")
+        }).catch((error) => {console.log(error)})
+
+    }
+
+    return (
+        <GenericContainer> 
+            <Lists>
+                <h2>LOGIN</h2>
+                <FormContainer>
+                    <input 
+                    placeholder={"E-mail"}
+                    value={email}
+                    onChange={onChangeEmail} />
+
+                    <input 
+                    type="password"
+                    placeholder={"Senha"} 
+                    value={senha}
+                    onChange={onChangeSenha}/>
+
+                    <button onClick={login}>Entrar</button>
+                </FormContainer>
+
+            </Lists>
+            <MenuBar>
                 <button onClick={() => {navigate(-1)}}>Voltar</button>
-            </MenuLateral>
-        </ContainerListTrips>
+            </MenuBar>
+        </GenericContainer>
     )
 }

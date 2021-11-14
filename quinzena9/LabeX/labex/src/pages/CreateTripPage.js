@@ -1,59 +1,25 @@
 import React from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router";
+import { useProtectedPage } from "../hooks";
+import { MenuBar, GenericContainer, Lists, FormCreateTrip } from "../pages/styled";
 
-
-const ContainerApplicationForm = styled.div`
-    display: flex;
-    margin: 0 2%;
-    justify-content: space-between;
-`
-
-const Form = styled.div` 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 50vh;
-    width: 40vw;
-    padding: 2%;
-    border: 1px solid black;
-    background-color: lightseagreen;
-    font-size: large;
-    margin-top: 5%;
-    >button{
-        align-self: center;
-    }
-`
-const ContainerForm = styled.div`
-    margin: 0 auto;
-
-    >h2{
-        text-align: center;
-    } 
-`
-
-const MenuLateral = styled.div`
-    height: 100vh;
-    width: 10vw;
-    border-left: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 5%;
-    >button{
-        margin-top: 15%;
-    }
-`
 
 export function CreateTripPage () {
 
     const navigate = useNavigate()
 
+    useProtectedPage()
+
+    const logout = () => {
+        localStorage.clear("token")
+        navigate("/login")
+    }
+
     return (
-        <ContainerApplicationForm> 
-            <ContainerForm>
+        <GenericContainer> 
+            <Lists>
                 <h2>CRIAR VIAGEM</h2>
-                <Form>
+                <FormCreateTrip>
                     <input placeholder={"Nome"}></input>
                     <input placeholder={"Planeta"}></input>
                     <input placeholder={"Data"}></input>
@@ -61,13 +27,13 @@ export function CreateTripPage () {
                     <input placeholder={"Duração"}></input>
                     
                     <button>Criar</button>
-                </Form>
-            </ContainerForm>
-            <MenuLateral>
+                </FormCreateTrip>
+            </Lists>
+            <MenuBar>
                 <button onClick={() => {navigate(-1)}}>Voltar</button>
-                <button>Logout</button>
-            </MenuLateral>
+                <button onClick={logout}>Logout</button>
+            </MenuBar>
 
-        </ContainerApplicationForm>
+        </GenericContainer>
     )
 }

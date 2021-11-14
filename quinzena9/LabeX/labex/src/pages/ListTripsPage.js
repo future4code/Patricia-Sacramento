@@ -1,43 +1,7 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router";
-import styled from "styled-components";
-
-
-const ContainerListTrips = styled.div`
-    display: flex;
-    margin: 0 2%;
-    justify-content: space-between;
-
-`
-const ListTrips = styled.div `
-   margin: 0 auto;
-    >h2{
-        text-align: center;
-    }  
-`
-const MenuLateral = styled.div`
-    height: 100vh;
-    width: 10vw;
-    border-left: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 5%;
-    >button{
-        margin-top: 15%;
-    }
-` 
-
-const ContainerViagem = styled.div` 
-    height: 40vh;
-    width: 40vw;
-    padding: 1%;
-    border: 1px solid black;
-    background-color: lightseagreen;
-    font-size: large;
-    margin-top: 2%;
-`
+import { MenuBar, GenericContainer, Lists, TripAndCandidateContainer } from "../pages/styled";
 
 
 
@@ -45,29 +9,41 @@ export function ListTripsPage () {
 
     const navigate = useNavigate()
 
+    const [trips, setTrips] = useState ([])
+
+    const getTrips = () => {
+        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/patricia-sacramento-banu/trips")
+        .then((response) => {
+            setTrips(response.data.trips)
+        }).catch(() => {
+            alert("Algo deu errado! Tente novamente mais tarde!")
+        })
+    }
+
+    useEffect(() => {
+        getTrips()
+    }, [])
+
+    const listTripsMap = trips.map((trip) => {
+        return <TripAndCandidateContainer key={trip.id}>
+            <p><b>Nome: </b>{trip.name}</p>
+            <p><b>Descrição: </b>{trip.description}</p>
+            <p><b>Planeta: </b>{trip.planet}</p>
+            <p><b>Duração: </b>{trip.durationInDays}</p>
+            <p><b>Data:</b> {trip.date}</p>
+        </TripAndCandidateContainer>
+    })
+
     return (
-        <ContainerListTrips> 
-            <ListTrips>
+        <GenericContainer> 
+            <Lists>
                 <h2>VIAGENS</h2>
-                <ContainerViagem>
-                    <p><b>Nome:</b></p>
-                    <p><b>Descrição: </b></p>
-                    <p><b>Planeta: </b></p>
-                    <p><b>Duração: </b></p>
-                    <p><b>Data: </b></p>
-                </ContainerViagem>
-                <ContainerViagem>
-                    <p><b>Nome:</b></p>
-                    <p><b>Descrição: </b></p>
-                    <p><b>Planeta: </b></p>
-                    <p><b>Duração: </b></p>
-                    <p><b>Data: </b></p>
-                </ContainerViagem>
-            </ListTrips>
-            <MenuLateral>
+                {listTripsMap}
+            </Lists>
+            <MenuBar>
                 <button onClick={() => {navigate(-1)}}>Voltar</button>
                 <button onClick={() => {navigate("/trips/application")}}>Inscreva-se</button>
-            </MenuLateral>
-        </ContainerListTrips>
+            </MenuBar>
+        </GenericContainer>
     )
 }
