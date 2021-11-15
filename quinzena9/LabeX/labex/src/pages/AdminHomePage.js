@@ -1,8 +1,9 @@
 import React, {useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate} from "react-router";
 import axios from "axios";
 import { useProtectedPage } from "../hooks";
-import { MenuBar, GenericContainer, Lists, AdminTripContainer } from "./styled";
+import { BASE_URL } from "../constants";
+import { MenuBar, GenericContainer, Lists, AdminTripContainer, GenericButton } from "./styled";
 
 
 export function AdminHomePage () {
@@ -12,7 +13,7 @@ export function AdminHomePage () {
     const [trips, setTrips] = useState ([])
 
     const getTrips = () => {
-        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/patricia-sacramento-banu/trips")
+        axios.get(`${BASE_URL}/trips`)
         .then((response) => {
             setTrips(response.data.trips)
         }).catch(() => {
@@ -22,20 +23,33 @@ export function AdminHomePage () {
 
     useProtectedPage()
 
+    const token = localStorage.getItem("token");
+
     useEffect(() => {
         getTrips() 
 
-    }, [])
+    }, [trips])
 
 
     const goToTripDetailsPage = (id) => {
         navigate(`/admin/trips/${id}`)
     }
 
+    const deleteTrip = (id) => {
+        
+        axios.delete(`${BASE_URL}/trips/${id}`, {
+            headers: {
+                auth: token
+            }
+        })
+        .then(() => {alert("Viagem deletada com sucesso!")})
+        .catch(() => {alert("Algo deu errado! Tente novamente")})
+    }
+
     const listTripsAdmin = trips.map((trip) => {
-        return <AdminTripContainer key={trip.id} onClick={() => {goToTripDetailsPage(trip.id)}}>
-            <p><b>Nome: </b>{trip.name}</p>
-            <button>Deletar</button>
+        return <AdminTripContainer key={trip.id} >
+            <p onClick={() => {goToTripDetailsPage(trip.id)}}><b>Nome: </b>{trip.name}</p>
+            <button onClick={() => {deleteTrip(trip.id)}}>Deletar</button>
         </AdminTripContainer>
     })
 
@@ -43,6 +57,8 @@ export function AdminHomePage () {
         localStorage.clear("token")
         navigate("/login")
     }
+
+
 
     return (
    
@@ -52,9 +68,9 @@ export function AdminHomePage () {
                 {listTripsAdmin}
             </Lists>
             <MenuBar>
-                <button onClick={() => {navigate(-1)}}>Voltar</button>
-                <button onClick={() => {navigate("/admin/trips/create")}}>Criar Viagem</button>
-                <button onClick={logout}>Logout</button>
+                <GenericButton onClick={() => {navigate(-1)}}>Voltar</GenericButton>
+                <GenericButton onClick={() => {navigate("/admin/trips/create")}}>Criar Viagem</GenericButton>
+                <GenericButton onClick={logout}>Logout</GenericButton>
             </MenuBar>
         </GenericContainer>
     )

@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { useProtectedPage } from "../hooks";
-import { MenuBar, GenericContainer, Lists, TripAndCandidateContainer } from "./styled";
+import { MenuBar, GenericContainer, Lists, TripAndCandidateContainer, GenericButton } from "./styled";
+import { BASE_URL } from "../constants";
  
 
 export function TripDetailsPage () {
@@ -18,7 +19,7 @@ export function TripDetailsPage () {
 
     const getTripDetails = async (token, id) => {
         try {
-            const response = await axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/patricia-sacramento-banu/trip/${id}`, {
+            const response = await axios.get(`${BASE_URL}/trip/${id}`, {
                 headers: {
                     auth: token
                 }
@@ -50,7 +51,7 @@ export function TripDetailsPage () {
         </TripAndCandidateContainer> 
     )
 
-    const apvdCandidates = (
+    const listApprovedCandidates = (
         <TripAndCandidateContainer>
             {approvedCandidates === [] ?  <p><b>Nome:</b> {approvedCandidates.name}</p> : "Não há candidatos aprovados" }
         </TripAndCandidateContainer>
@@ -81,11 +82,11 @@ export function TripDetailsPage () {
                 <h3>CANDIDATOS PENDENTES</h3>
                 {pendentCandidates}
                 <h3>CANDIDATOS APROVADOS</h3>
-                {apvdCandidates}
+                {listApprovedCandidates}
             </Lists>
             <MenuBar>
-                <button onClick={() => {navigate(-1)}}>Voltar</button>
-                <button onClick={logout}>Logout</button>
+                <GenericButton onClick={() => {navigate(-1)}}>Voltar</GenericButton>
+                <GenericButton onClick={logout}>Logout</GenericButton>
             </MenuBar>
         </GenericContainer>
     )

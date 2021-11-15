@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { MenuBar, GenericContainer, Lists, FormContainer } from "./styled";
+import { BASE_URL } from "../constants";
+import { MenuBar, GenericContainer, Lists, FormContainer, GenericButton } from "./styled";
 
 
 export function LoginPage () {
@@ -10,7 +11,6 @@ export function LoginPage () {
 
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
-    const [token, setToken] = useState("")
 
     const onChangeEmail = (event) => {
         setEmail(event.target.value)
@@ -26,9 +26,8 @@ export function LoginPage () {
     }
 
     const login = () => {
-       axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/patricia-sacramento-banu/login", body)
+       axios.post(`${BASE_URL}/login`, body)
         .then((response) => {
-            setToken(response.data.token)
             localStorage.setItem("token", response.data.token)
             navigate("/admin/trips/list")
             setEmail("")
@@ -45,20 +44,23 @@ export function LoginPage () {
                     <input 
                     placeholder={"E-mail"}
                     value={email}
-                    onChange={onChangeEmail} />
+                    onChange={onChangeEmail} 
+                    type="email"
+                    required/>
 
                     <input 
                     type="password"
                     placeholder={"Senha"} 
                     value={senha}
-                    onChange={onChangeSenha}/>
+                    onChange={onChangeSenha}
+                    required/>
 
                     <button onClick={login}>Entrar</button>
                 </FormContainer>
 
             </Lists>
             <MenuBar>
-                <button onClick={() => {navigate(-1)}}>Voltar</button>
+                <GenericButton onClick={() => {navigate(-1)}}>Voltar</GenericButton>
             </MenuBar>
         </GenericContainer>
     )

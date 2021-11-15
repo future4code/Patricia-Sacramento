@@ -13,9 +13,10 @@ export const Header = styled.header `
 `
 
 export const MenuBar = styled.div`
-    height: 100vh;
+    min-height: 90vh;
     width: 10vw;
     border-left: 1px solid black;
+    background-color: lightseagreen;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +28,7 @@ export const MenuBar = styled.div`
 
 export const GenericContainer = styled.div`
     display: flex;
-    margin: 0 2%;
+    margin: 0;
     justify-content: space-between;
 `
 
@@ -56,20 +57,20 @@ export const FormContainer = styled.div`
     }
 `
 
-export const FormCreateTrip = styled.div` 
-display: flex;
-flex-direction: column;
-justify-content: space-evenly;
-height: 50vh;
-width: 40vw;
-padding: 2%;
-border: 1px solid black;
-background-color: lightseagreen;
-font-size: large;
-margin-top: 5%;
->button{
-    align-self: center;
-}
+export const FormCreateTrip = styled.form` 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 50vh;
+    width: 40vw;
+    padding: 2%;
+    border: 1px solid black;
+    background-color: lightseagreen;
+    font-size: large;
+    margin-top: 5%;
+    >button{
+        align-self: center;
+    }
 `
 
 export const AdminTripContainer = styled.div` 
@@ -99,4 +100,11 @@ export const TripAndCandidateContainer = styled.div`
     font-size: large;
     margin-top: 2%;
 
+`
+
+export const GenericButton = styled.button`
+    background-color: lightseagreen;
+    border: none;
+    border-bottom: 3px solid black;
+    width: 75%;
 `

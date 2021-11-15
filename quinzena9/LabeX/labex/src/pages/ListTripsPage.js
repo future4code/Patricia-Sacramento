@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router";
-import { MenuBar, GenericContainer, Lists, TripAndCandidateContainer } from "../pages/styled";
+import { BASE_URL } from "../constants";
+import { MenuBar, GenericContainer, Lists, TripAndCandidateContainer, GenericButton } from "../pages/styled";
 
 
 
@@ -12,7 +13,7 @@ export function ListTripsPage () {
     const [trips, setTrips] = useState ([])
 
     const getTrips = () => {
-        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/patricia-sacramento-banu/trips")
+        axios.get(`${BASE_URL}/trips`)
         .then((response) => {
             setTrips(response.data.trips)
         }).catch(() => {
@@ -41,8 +42,8 @@ export function ListTripsPage () {
                 {listTripsMap}
             </Lists>
             <MenuBar>
-                <button onClick={() => {navigate(-1)}}>Voltar</button>
-                <button onClick={() => {navigate("/trips/application")}}>Inscreva-se</button>
+                <GenericButton onClick={() => {navigate(-1)}}>Voltar</GenericButton>
+                <GenericButton onClick={() => {navigate("/trips/application")}}>Inscreva-se</GenericButton>
             </MenuBar>
         </GenericContainer>
     )
